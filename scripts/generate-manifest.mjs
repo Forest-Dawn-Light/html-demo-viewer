@@ -1,7 +1,7 @@
 /**
  * generate-manifest.mjs
  *
- * Scans demos/**\/*.html, reads optional .meta.json sidecar files,
+ * Scans demos/**\/*.html (recursively), reads optional .meta.json sidecar files,
  * and writes src/viewer/generated-pages.js for the viewer to consume.
  *
  * Usage:  node scripts/generate-manifest.mjs
