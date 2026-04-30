@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Analytics Dashboard</title>
+    <style>
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        background: #f0f4f8;
+        color: #333;
+        min-height: 100vh;
+      }
+
+      /* Header */
+      .header {
+        background: #1e3a5f;
+        color: #fff;
+        padding: 14px 24px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .header h1 { font-size: 17px; font-weight: 600; }
+
+      /* Stat cards */
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: 16px;
+        padding: 24px;
+      }
+      .card {
+        background: #fff;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 2px 8px rgba(0 0 0 / 0.07);
+      }
+      .card-value {
+        font-size: 34px;
+        font-weight: 700;
+        color: #4f8ef7;
+        line-height: 1;
+      }
+      .card-label {
+        font-size: 12px;
+        color: #888;
+        margin-top: 6px;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+      .card-trend {
+        font-size: 12px;
+        margin-top: 8px;
+        color: #52c41a;
+      }
+
+      /* Bar chart */
+      .chart-wrapper {
+        background: #fff;
+        border-radius: 10px;
+        padding: 20px 24px;
+        margin: 0 24px 24px;
+        box-shadow: 0 2px 8px rgba(0 0 0 / 0.07);
+      }
+      .chart-title {
+        font-size: 14px;
+        font-weight: 600;
+        margin-bottom: 16px;
+        color: #333;
+      }
+      .bars {
+        display: flex;
+        align-items: flex-end;
+        gap: 8px;
+        height: 100px;
+      }
+      .bar-col {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+        height: 100%;
+      }
+      .bar {
+        width: 100%;
+        background: #4f8ef7;
+        border-radius: 4px 4px 0 0;
+        opacity: 0.82;
+        transition: opacity 0.15s;
+        cursor: default;
+      }
+      .bar:hover { opacity: 1; }
+      .bar-label {
+        font-size: 10px;
+        color: #999;
+        white-space: nowrap;
+      }
+
+      /* Recent table */
+      .table-wrapper {
+        background: #fff;
+        border-radius: 10px;
+        padding: 20px 24px;
+        margin: 0 24px 24px;
+        box-shadow: 0 2px 8px rgba(0 0 0 / 0.07);
+        overflow-x: auto;
+      }
+      .table-title {
+        font-size: 14px;
+        font-weight: 600;
+        margin-bottom: 14px;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 13px;
+      }
+      th {
+        text-align: left;
+        padding: 8px 10px;
+        color: #888;
+        font-weight: 600;
+        border-bottom: 1px solid #f0f0f0;
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+      }
+      td {
+        padding: 10px;
+        border-bottom: 1px solid #f8f8f8;
+      }
+      tr:last-child td { border-bottom: none; }
+      .status {
+        display: inline-block;
+        padding: 2px 8px;
+        border-radius: 10px;
+        font-size: 11px;
+        font-weight: 600;
+      }
+      .status-ok  { background: #f6ffed; color: #52c41a; }
+      .status-warn { background: #fffbe6; color: #faad14; }
+      .status-err  { background: #fff1f0; color: #ff4d4f; }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <span>📊</span>
+      <h1>Analytics Dashboard</h1>
+    </div>
+
+    <div class="stats">
+      <div class="card">
+        <div class="card-value">1,284</div>
+        <div class="card-label">Total Users</div>
+        <div class="card-trend">▲ 12% this week</div>
+      </div>
+      <div class="card">
+        <div class="card-value">342</div>
+        <div class="card-label">Active Today</div>
+        <div class="card-trend">▲ 5% vs yesterday</div>
+      </div>
+      <div class="card">
+        <div class="card-value">98.7%</div>
+        <div class="card-label">Uptime</div>
+        <div class="card-trend" style="color:#52c41a">● Healthy</div>
+      </div>
+      <div class="card">
+        <div class="card-value">4.2s</div>
+        <div class="card-label">Avg Load Time</div>
+        <div class="card-trend" style="color:#faad14">▼ 0.3s slower</div>
+      </div>
+    </div>
+
+    <div class="chart-wrapper">
+      <div class="chart-title">Weekly Activity</div>
+      <div class="bars">
+        <div class="bar-col">
+          <div class="bar" style="height:40%"></div>
+          <div class="bar-label">Mon</div>
+        </div>
+        <div class="bar-col">
+          <div class="bar" style="height:65%"></div>
+          <div class="bar-label">Tue</div>
+        </div>
+        <div class="bar-col">
+          <div class="bar" style="height:55%"></div>
+          <div class="bar-label">Wed</div>
+        </div>
+        <div class="bar-col">
+          <div class="bar" style="height:80%"></div>
+          <div class="bar-label">Thu</div>
+        </div>
+        <div class="bar-col">
+          <div class="bar" style="height:72%"></div>
+          <div class="bar-label">Fri</div>
+        </div>
+        <div class="bar-col">
+          <div class="bar" style="height:90%"></div>
+          <div class="bar-label">Sat</div>
+        </div>
+        <div class="bar-col">
+          <div class="bar" style="height:58%"></div>
+          <div class="bar-label">Sun</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="table-wrapper">
+      <div class="table-title">Recent Events</div>
+      <table>
+        <thead>
+          <tr>
+            <th>Event</th>
+            <th>User</th>
+            <th>Time</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>User login</td>
+            <td>alice@example.com</td>
+            <td>2 min ago</td>
+            <td><span class="status status-ok">OK</span></td>
+          </tr>
+          <tr>
+            <td>Report generated</td>
+            <td>bob@example.com</td>
+            <td>15 min ago</td>
+            <td><span class="status status-ok">OK</span></td>
+          </tr>
+          <tr>
+            <td>API timeout</td>
+            <td>system</td>
+            <td>32 min ago</td>
+            <td><span class="status status-warn">WARN</span></td>
+          </tr>
+          <tr>
+            <td>Failed export</td>
+            <td>carol@example.com</td>
+            <td>1 hr ago</td>
+            <td><span class="status status-err">ERROR</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>

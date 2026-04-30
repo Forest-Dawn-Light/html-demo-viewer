@@ -1,0 +1,9 @@
+{
+  "id": "getting-started",
+  "label": "Getting Started",
+  "group": "Getting Started",
+  "order": 0,
+  "tags": ["intro", "overview"],
+  "description": "Welcome page and overview of the HTML Demo Viewer",
+  "entry": true
+}

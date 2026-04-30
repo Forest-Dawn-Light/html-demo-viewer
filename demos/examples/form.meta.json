@@ -1,0 +1,8 @@
+{
+  "id": "contact-form",
+  "label": "Contact Form",
+  "group": "Examples",
+  "order": 2,
+  "tags": ["form", "input", "validation", "ui"],
+  "description": "A polished contact form with field validation and a success state"
+}

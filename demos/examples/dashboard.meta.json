@@ -1,0 +1,8 @@
+{
+  "id": "dashboard",
+  "label": "Analytics Dashboard",
+  "group": "Examples",
+  "order": 1,
+  "tags": ["dashboard", "charts", "analytics", "table"],
+  "description": "A sample analytics dashboard with stat cards, a bar chart, and a recent-events table"
+}
