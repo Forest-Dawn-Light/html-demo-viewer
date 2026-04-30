@@ -1,0 +1,15 @@
+{
+  "name": "html-demo-viewer",
+  "version": "1.0.0",
+  "description": "A Vite-based HTML Demo Viewer / DemoPress platform",
+  "type": "module",
+  "scripts": {
+    "dev": "node scripts/generate-manifest.mjs && vite",
+    "build": "node scripts/generate-manifest.mjs && vite build",
+    "preview": "vite preview",
+    "generate:manifest": "node scripts/generate-manifest.mjs"
+  },
+  "devDependencies": {
+    "vite": "^8.0.10"
+  }
+}
